@@ -34,17 +34,18 @@ struct ListView: View {
         .offset(y: 100)
     }
     func logout() {
-            do {
-                try Auth.auth().signOut()
-                // Navigate back to the root view, which is ContentView
-                if let window = UIApplication.shared.windows.first {
-                    window.rootViewController = UIHostingController(rootView: ContentView())
-                    window.makeKeyAndVisible()
-                }
-            } catch let signOutError as NSError {
-                print("Error signing out: %@", signOutError)
+        do {
+            try Auth.auth().signOut()
+            // Navigate back to the root view, which is ContentView
+            if let window = UIApplication.shared.windows.first {
+                window.rootViewController = UIHostingController(rootView: ContentView())
+                window.makeKeyAndVisible()
             }
-        }}
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
+}
 
 
 #Preview {
